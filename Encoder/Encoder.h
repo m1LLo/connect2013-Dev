@@ -14,6 +14,7 @@
 #include "ReadFileClass.h"
 #include "WriteFileClass.h"
 #include "EncoderClass.h"
+#include "EncodingCheckClass.h"
 using namespace std;
 
 const char* KEINE_PARAMETER_UEBERGEBEN =

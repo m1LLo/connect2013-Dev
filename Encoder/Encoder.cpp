@@ -7,6 +7,13 @@
  * Grossbuchstaben:	B-M werden um 1 verringert
  * 					N-Y werden um 1 erhoeht
  * 					A=M, Z=N
+ *
+ * Programmaufrufe: Encode Modus:
+ * 					programmname quelldatei zeildatei
+ *
+ * 					Vergleichs Modus: (-c hinter den Dateien!)
+ * 					programmname datei1 datei2 -c
+ *
  *	
  * @file:		Encoder.cpp
  * @date: 		12.06.2013
@@ -24,11 +31,7 @@ int main(int argc, char* argv[])
 	//Auffangen der geworfenen Fehler
 	try
 	{
-		//argc ist immer mindestens 1!
-		if (argc >3)
-		{
-			throw ZUVIELE_PARAMETER;
-		}
+		//Ueberpruefung auf Fehleingaben des Benutzers
 		if (argc < 2)
 		{
 			throw KEINE_PARAMETER_UEBERGEBEN;
@@ -36,6 +39,34 @@ int main(int argc, char* argv[])
 		if (argc < 3)
 		{
 			throw KEINE_AUSGABE_DATEI_ANGEGEBEN;
+		}
+
+		//Werfe immer einen Fehler wenn mehr als 3 Parameter uebergeben
+		if (argc > 4)
+		{
+			throw ZUVIELE_PARAMETER;
+		}
+
+		if (argc > 3)
+		{
+			/* Startet den Vergleichsmodus um Verschluesslung mit Vorlage
+			 * zu vergleichen.
+			 */
+			if (strcmp(argv[3], "-c") == 0)
+			{
+
+				//Auslesen beider Dateien
+				ReadFileClass ersteDatei(argv[1]);
+				ReadFileClass zweiteDatei(argv[2]);
+
+				EncodingCheckClass vergleichen(ersteDatei.getGelesenerInhalt(),
+						zweiteDatei.getGelesenerInhalt());
+			}
+			else
+			{
+				throw ZUVIELE_PARAMETER;
+			}
+
 		}
 
 		ReadFileClass lesen(argv[1]);
