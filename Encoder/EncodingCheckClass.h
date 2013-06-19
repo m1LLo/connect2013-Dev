@@ -1,7 +1,8 @@
 /**
- * Vergleicht die encodete Datei mit einer Vorlagen Datei auf richtige
- * funktionsweise.
+ * Klasse vergleicht die encodete Datei mit einer Vorlagen Datei auf richtige
+ * verschluesselung.
  *	
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		EncodingCheckClass.h
  * @date: 		18.06.2013
  * @author:	 	Markus Leitz (3543994)

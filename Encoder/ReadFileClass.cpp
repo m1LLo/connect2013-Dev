@@ -12,7 +12,7 @@
 const char* ReadFileClass::FEHLER_BEIM_OEFFNEN_DER_DATEI =
 		"Datei konnte nicht geoeffnet werden";
 
-//Einziger gueltiger Konstruktor
+//Einziger gueltiger/moeglicher Konstruktor
 ReadFileClass::ReadFileClass(char* quelldatei)
 {
 	ifstream quelle;

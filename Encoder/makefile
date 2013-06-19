@@ -12,7 +12,7 @@ DELOBJ = *.o
 APPLICATION = encoder
 
 #Objekte fuer kompilierung
-OBJEKTS = ReadFileClass.o WriteFileClass.o EncoderClass.o EncodingCheckClass.o
+OBJEKTS = ReadFileClass.o WriteFileClass.o EncoderClass.o EncodingCheckClass.o DecoderClass.o
 
 all: encoder
 
@@ -25,6 +25,8 @@ WriteFileClass.o: WriteFileClass.cpp WriteFileClass.h
 EncoderClass.o: EncoderClass.cpp EncoderClass.h
 
 EncodingCheckClass.o: EncodingCheckClass.cpp EncodingCheckClass.h
+
+DecoderClass.o: DecoderClass.cpp DecoderClass.h
 
 
 # Loeschen der Objektdateien und der Binary

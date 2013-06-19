@@ -7,13 +7,6 @@
  * Grossbuchstaben:	B-M werden um 1 verringert
  * 					N-Y werden um 1 erhoeht
  * 					A=M, Z=N
- *
- * Programmaufrufe: Encode Modus:
- * 					programmname quelldatei zeildatei
- *
- * 					Vergleichs Modus: (-c hinter den Dateien!)
- * 					programmname datei1 datei2 -c
- *
  *	
  * @file:		Encoder.cpp
  * @date: 		12.06.2013
@@ -27,57 +20,123 @@
 //char* argv[0] ist immer der Name des Programms!
 int main(int argc, char* argv[])
 {
-
-	//Auffangen der geworfenen Fehler
-	try
-	{
-		//Ueberpruefung auf Fehleingaben des Benutzers
-		if (argc < 2)
-		{
-			throw KEINE_PARAMETER_UEBERGEBEN;
-		}
-		if (argc < 3)
-		{
-			throw KEINE_AUSGABE_DATEI_ANGEGEBEN;
-		}
-
-		//Werfe immer einen Fehler wenn mehr als 3 Parameter uebergeben
-		if (argc > 4)
-		{
-			throw ZUVIELE_PARAMETER;
-		}
-
-		if (argc > 3)
-		{
-			/* Startet den Vergleichsmodus um Verschluesslung mit Vorlage
-			 * zu vergleichen.
-			 */
-			if (strcmp(argv[3], "-c") == 0)
-			{
-
-				//Auslesen beider Dateien
-				ReadFileClass ersteDatei(argv[1]);
-				ReadFileClass zweiteDatei(argv[2]);
-
-				EncodingCheckClass vergleichen(ersteDatei.getGelesenerInhalt(),
-						zweiteDatei.getGelesenerInhalt());
-			}
-			else
-			{
-				throw ZUVIELE_PARAMETER;
-			}
-
-		}
-
+	try {
 		ReadFileClass lesen(argv[1]);
-		EncoderClass encoden(lesen.getGelesenerInhalt());
-		WriteFileClass schreiben(encoden.getCodierterString(), argv[2]);
+		DecoderClass decodieren(lesen.getGelesenerInhalt());
+		WriteFileClass schreiben(decodieren.getDecodeterString(),argv[2]);
 
-	} catch (const char* fehler)
-	{
-		cout << fehler << endl;
+	} catch (const char* e) {
+		cout << e;
 	}
+	//parameterUeberpruefen(argc, argv);
+
+//	//Auffangen der geworfenen Fehler
+//	try
+//	{
+//
+//		//Setzt den Programmmodus: 0 Encoden, 1 Vergleichen
+//		int modus = 0;
+//
+//		//ueberpruefen ob ein Modus gesetzt wurde (-c am schluss)
+//		if (argc > 3)
+//		{
+//			if (strcmp(argv[3], "-c") == 0)
+//			{
+//				/* Auch Fehler werfen falls -c gesetzt wurde aber mehr als
+//				 * 3 Parameter gesetzt wurden!
+//				 */
+//				if (argc > 4)
+//				{
+//					throw ZUVIELE_PARAMETER;
+//				}
+//				//Ansonsten setze den Vergleichsmodus
+//				modus = 1;
+//			}
+//			else
+//			{
+//				throw ZUVIELE_PARAMETER;
+//			}
+//		}
+//
+//		if (argc < 2)
+//		{
+//			throw KEINE_PARAMETER_UEBERGEBEN;
+//		}
+//		if (argc < 3)
+//		{
+//			throw KEINE_AUSGABE_DATEI_ANGEGEBEN;
+//		}
+//
+//		//Encoding Modus
+//		if (modus == 0)
+//		{
+//			//Oeffnen der Datei und einlesen des Inhalts
+//			ReadFileClass lesen(argv[1]);
+//
+//			//Encoden des Inhalts
+//			EncoderClass encoden(lesen.getGelesenerInhalt());
+//
+//			//Schreiben in Ausgabedatei
+//			WriteFileClass schreiben(encoden.getCodierterString(), argv[2]);
+//
+//			//Bestaetigung fuer den Nutzer
+//			cout << "ENCODEN ERFOLGREICH" << endl;
+//		}
+//
+//		//Vergleichs Modus
+//		if (modus == 1)
+//		{
+//			//Oeffnen der Dateien und einlesen der Inhalte
+//			ReadFileClass ersteDatei(argv[1]);
+//			ReadFileClass zweiteDatei(argv[2]);
+//
+//			//Vergleichen der Dateien
+//			EncodingCheckClass vergleichen(ersteDatei.getGelesenerInhalt(),
+//					zweiteDatei.getGelesenerInhalt());
+//		}
+//
+//	} catch (const char* fehler)
+//	{
+//		cout << fehler << endl;
+//	}
 
 	return 0;
 }
 
+int parameterUeberpruefen(int anzahl, char* parameterArray[])
+{
+	int modus;
+
+	if (anzahl == 4)
+	{
+
+		if(strcmp(parameterArray[1], "-c")
+		{
+			//checkmodus
+		}
+		if(strcmp(parameterArray[1], "-c")
+				{
+					//checkmodus
+				}
+
+
+	}
+
+	return modus;
+}
+
+void encoden(char* quellDatei, char* zielDatei)
+{
+}
+
+void decoden(char* quellDatei, char* zielDatei)
+{
+}
+
+void encodenTesten(char* quellDatei, char* vergleichsDatei)
+{
+}
+
+void dateienVergleichen(char* zuVergleichendeDatei, char* VorlageDatei)
+{
+}

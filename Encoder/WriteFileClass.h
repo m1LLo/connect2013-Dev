@@ -1,7 +1,8 @@
 /**
- * Klasse schreibt einen String in eine Datei.
+ * Klasse schreibt einen uebergeben String in eine angebene Datei.
  * Benoetigt werden der String und der Name der Zieldatei.
  *	
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		WriteFileClass.h
  * @date: 		14.06.2013
  * @author:	 	Markus Leitz (3543994)

@@ -1,7 +1,10 @@
 /**
  * Implimentieren der Methoden der Klasse EncodingCheckClass.
- * Klasse vergleicht zwei Strings
- *	
+ * Klasse vergleicht zwei Strings welche aus zwei Dateien gelesen wurden
+ * auf ungleichheit. Wurde keine Ungleichheit gefunden muessen sie
+ * logischer gleich sein.
+ *
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		EncodingCheckClass.cpp
  * @date: 		18.06.2013
  * @author:	 	Markus Leitz (3543994)

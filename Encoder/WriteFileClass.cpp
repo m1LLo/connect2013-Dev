@@ -1,7 +1,8 @@
 /**
- * Deklaration der Methoden der Klasse WriteFileClass
+ * Methoden- und Konstantendeklaration der Methoden der Klasse
+ * WriteFileClass. Schreibt einen String in eine Zieldatei.
  *
- *	
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		WriteFileClass.cpp
  * @date: 		14.06.2013
  * @author:	 	Markus Leitz (3543994)

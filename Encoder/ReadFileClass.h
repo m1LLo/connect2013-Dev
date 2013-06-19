@@ -1,9 +1,12 @@
 /**
- * Klasse liest eine Datei ein und Speichert deren Inhalt in einem String.
- * Der Pfad der Quelle muss als Char uebergeben werden! Zugriff auf
- * gelesenen Inhalt ueber GET-Methode. Keine toString Methode notwendig da
- * Attribut ein String ist.
+ * Klasse liest eine uebergebene Datei ein und Speichert deren Inhalt in
+ * einem String.
+ * Der Pfad der Quelle muss als Pointer auf Char uebergeben werden!
+ * Zugriff auf gelesenen Inhalt ueber GET-Methode.
+ * KEINE toString Methode notwendig da Attribut ein String ist.
+ * KEINE Destruktor Methode da nur Standard-Datentypen destruiert werden.
  *
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		ReadFileClass.h
  * @date: 		14.06.2013
  * @author:	 	Markus Leitz (3543994)
