@@ -39,6 +39,8 @@ public:
 	 */
 	ReadFileClass(char* quelldatei);
 
+	bool stringIstLeer(const ifstream& zuUntersuchenderString) const;
+
 	/**
 	 * GET-Methode zum Auslesen des Inhalts fuer andere Objekte.
 	 * Somit wird FRIEND unnoetig und der Inhalt ist trotzdem nicht

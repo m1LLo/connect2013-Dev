@@ -32,3 +32,13 @@ ReadFileClass::ReadFileClass(char* quelldatei)
 
 	quelle.close();
 }
+
+bool ReadFileClass::stringIstLeer(const ifstream& dateiZuOeffnen) const
+{
+	//erstes Zeichen gleich EOF
+	//if (dateiZuOeffnen.peek() == ifstream::traits_type::eof())
+	//{
+		return true;
+	//}
+	return false;
+}
