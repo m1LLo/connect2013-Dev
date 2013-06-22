@@ -14,7 +14,22 @@ APPLICATION = encoder
 #Objekte fuer kompilierung
 OBJEKTS = ReadFileClass.o WriteFileClass.o EncoderClass.o EncodingCheckClass.o DecoderClass.o ParameterCheckClass.o
 
-all: encoder
+#Benutzerinfos ausgeben
+OBJEKTEERSTELLEN = @echo "==OBJEKTDATEIEN WERDEN ERSTELLT=="
+ZUSAMMENFUEGEN =@echo "==AUSFUEHRBARE WIRD ERSTELLT=="
+
+#Nacheinander: Benutzerausgabe, Objektdateien erstellen,  Benutzerausgabe, Ausfuehrbare erstellen
+all: objekteerstellen objekte zusammenfuegen encoder
+
+objekteerstellen:
+	@echo ""
+	$(OBJEKTEERSTELLEN)
+	
+zusammenfuegen:
+	@echo ""
+	$(ZUSAMMENFUEGEN)
+	
+objekte: $(OBJEKTS)
 
 encoder: encoder.cpp $(OBJEKTS)
 
