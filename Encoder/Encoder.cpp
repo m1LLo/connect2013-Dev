@@ -7,7 +7,7 @@
  * Grossbuchstaben:	B-M werden um 1 verringert
  * 					N-Y werden um 1 erhoeht
  * 					A=M, Z=N
- *	
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		Encoder.cpp
  * @date: 		12.06.2013
  * @author:	 	Markus Leitz (3543994)
@@ -23,157 +23,50 @@ int main(int argc, char* argv[])
 	//Auffangen der geworfenen Fehler
 	try
 	{
+
 		int modus;
-		modus = parameterUeberpruefen(argc, argv);
+		modus = ParameterCheckClass::parameterUeberpruefen(argc, argv);
 
 		//ueberprueft die von main uebergeben Parameter
 		switch (modus)
 		{
-		case ENCODER_MODUS:
+		case ParameterCheckClass::ENCODER_MODUS:
 			encoden(argv[1], argv[2]);
 			break;
 
-		case CHECK_MODUS:
+		case ParameterCheckClass::CHECK_MODUS:
 			dateienVergleichen(argv[2], argv[3]);
 			break;
 
-		case DECODER_MODUS:
+		case ParameterCheckClass::DECODER_MODUS:
 			decoden(argv[2], argv[3]);
 			break;
 
-		case TEST_MODUS1:
+		case ParameterCheckClass::TEST_MODUS1:
 			encodenTestenOhneAusgabe(argv[2], argv[3]);
 			break;
 
-		case TEST_MODUS2:
+		case ParameterCheckClass::TEST_MODUS2:
 			encodenTestenMitAusgabe(argv[2], argv[3], argv[4]);
 			break;
 
-		case HILFS_MODUS:
-			hilfsMenuAusgeben();
+		case ParameterCheckClass::HILFS_MODUS:
+			ParameterCheckClass::hilfsMenuAusgeben();
 			break;
 		}
 
-	} catch (const char* fehler)
+	} catch (const runtime_error& rError)
 	{
-		cout << fehler << endl;
-	}
+		cout << rError.what() << endl;
 
+	} catch (const logic_error& lError)
+	{
+		cout << lError.what() << endl;
+	} catch (const exception& otherErrors)
+	{
+		cout << otherErrors.what() << endl;
+	}
 	return 0;
-}
-
-/**
- * Funktion ueberprueft die von der main uebergeben Parameter auf Fehler
- * und setzt den vom Benutzer gewaehlten Modus.
- * Modi:	-Encoding:	0	(Datei verschluesseln)
- * 		-Check:		1		(Vergleichen zweier verschluesselter Dateien)
- * 		-Decoding:	2	(Datei entschluesseln)
- * 		-Testmodus:	3	(Testet ob die Verschluesselung richtig funktioniert)
- *					4	(Testen mit Ausgabedatei)
- *
- * @param anzahl				Anzahl der uebergeben Parameter
- * @param parameterArray		Char* Array mit einzelen Parametern
- * @return					Modus als Int
- */
-int parameterUeberpruefen(int anzahl, char* parameterArray[])
-{
-	//Standard Encoder Modus!
-	int modus = 0;
-
-	//Falls garkeine Parameter uebergeben wurden
-	if (anzahl == 1)
-	{
-		throw KEINE_PARAMETER_UEBERGEBEN;
-	}
-
-	if (anzahl > 5)
-	{
-		throw ZUVIELE_PARAMETER;
-	}
-
-	//Gibt das Hilfsmenu aus
-	if (strcmp(parameterArray[1], HILFS_MODUS_PARAMETER) == 0)
-	{
-		modus = HILFS_MODUS;
-		return modus;
-	}
-
-	//Setzt den Checkmodus
-	if (strcmp(parameterArray[1], CHECK_MODUS_PARAMETER) == 0)
-	{
-		if (anzahl < 4)
-		{
-			if (anzahl == 3)
-			{
-				throw KEINE_VORLAGEN_DATEI;
-			}
-			if (anzahl == 2)
-			{
-				throw KEINE_PARAMETER_UEBERGEBEN;
-			}
-			modus = CHECK_MODUS;
-			return modus;
-		}
-	}
-
-	//setzt den DecoderModus
-	if (strcmp(parameterArray[1], DECODER_MODUS_PARAMETER) == 0)
-	{
-		if (anzahl > 4)
-		{
-			throw ZUVIELE_PARAMETER;
-		}
-		if (anzahl == 3)
-		{
-			throw KEINE_AUSGABE_DATEI_ANGEGEBEN;
-		}
-		if (anzahl == 2)
-		{
-			throw KEINE_PARAMETER_UEBERGEBEN;
-		}
-		modus = DECODER_MODUS;
-		return modus;
-	}
-
-	//TESTMODUS erkennen
-	if (strcmp(parameterArray[1], TEST_MODUS_PARAMETER) == 0)
-	{
-		if (anzahl == 4)
-		{
-			modus = TEST_MODUS1;
-			return modus;
-		}
-
-		if (anzahl == 5)
-		{
-			modus = TEST_MODUS2;
-			return modus;
-		}
-
-		if (anzahl == 3)
-		{
-			throw KEINE_VORLAGEN_DATEI;
-		}
-
-		if (anzahl == 2)
-		{
-			throw KEINE_PARAMETER_UEBERGEBEN;
-		}
-
-		return modus;
-	}
-
-	//Wenn bis hier kein Modus gesetz wurde ist der Modus Encoder
-	if (anzahl == 2)
-	{
-		throw KEINE_AUSGABE_DATEI_ANGEGEBEN;
-	}
-	if (anzahl == 1)
-	{
-		throw KEINE_PARAMETER_UEBERGEBEN;
-	}
-
-	return modus;
 }
 
 void encoden(char* quellDatei, char* zielDatei)
@@ -245,16 +138,14 @@ void encodenTestenMitAusgabe(char* quellDatei, char* zielDatei,
 
 void dateienVergleichen(char* zuVergleichendeDatei, char* vorlageDatei)
 {
-//Dateien einlesen
+	//zuvergleichende Datei einlesen
 	ReadFileClass zuVergleichen(zuVergleichendeDatei);
+
+	//Vorlagendatei einlesen
 	ReadFileClass vorlage(vorlageDatei);
 
-//Klasse gibt ueber cout aus ob Datei gleich oder nicht
+	//Klasse gibt ueber cout aus ob Datei gleich oder nicht
 	EncodingCheckClass checken(zuVergleichen.getGelesenerInhalt(),
 			vorlage.getGelesenerInhalt());
-}
 
-void hilfsMenuAusgeben()
-{
-	cout << "HILFSMENU" << endl;
 }

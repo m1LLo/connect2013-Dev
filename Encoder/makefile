@@ -3,7 +3,7 @@
 #     Author: Markus Leitz (3543994)
 
 #Compilerflags
-CFLAGS = -g -std=c++11 -pedantic -Wall 
+CFLAGS = -g -std=c++11 -pedantic -Wall
 
 #Zu loeschende Objektdateien
 DELOBJ = *.o
@@ -12,7 +12,7 @@ DELOBJ = *.o
 APPLICATION = encoder
 
 #Objekte fuer kompilierung
-OBJEKTS = ReadFileClass.o WriteFileClass.o EncoderClass.o EncodingCheckClass.o DecoderClass.o
+OBJEKTS = ReadFileClass.o WriteFileClass.o EncoderClass.o EncodingCheckClass.o DecoderClass.o ParameterCheckClass.o
 
 all: encoder
 
@@ -27,6 +27,8 @@ EncoderClass.o: EncoderClass.cpp EncoderClass.h
 EncodingCheckClass.o: EncodingCheckClass.cpp EncodingCheckClass.h
 
 DecoderClass.o: DecoderClass.cpp DecoderClass.h
+
+ParameterCheckClass.o: ParameterCheckClass.cpp ParameterCheckClass.h
 
 
 # Loeschen der Objektdateien und der Binary

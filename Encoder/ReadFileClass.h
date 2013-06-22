@@ -19,6 +19,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
 using namespace std;
 
 /**
@@ -30,7 +31,8 @@ class ReadFileClass
 {
 public:
 	//Fehlermeldungen
-	static const char* FEHLER_BEIM_OEFFNEN_DER_DATEI;
+	static const string DATEI_NICHT_VORHANDEN;
+	static const string DATEI_IST_LEER;
 
 	/**
 	 * Standard Konstruktor. Ist der einzig Moegliche.
@@ -39,7 +41,7 @@ public:
 	 */
 	ReadFileClass(char* quelldatei);
 
-	bool stringIstLeer(const ifstream& zuUntersuchenderString) const;
+	bool stringIstLeer(const char* zuUntersuchenderString) const;
 
 	/**
 	 * GET-Methode zum Auslesen des Inhalts fuer andere Objekte.
