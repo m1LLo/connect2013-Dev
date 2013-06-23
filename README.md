@@ -61,6 +61,16 @@ Zum Testen der Verschlüsselung gibt es 2 Möglichkeiten:
 1.  Datei Encoden und mit Check-Modus mit Vorlagendatei vergleichen.
 2.  Datei im Test-Modus Encoden und mit Vorlagendatei vergleichen.
 
+##Abgefangen Fehler
+
+-  Zu viele Parameter angeben
+-  zu wenig Parameter angeben
+-  Datei ist nicht vorhanden
+-  Datei ist leer
+
+###Nicht abgefangen
+Das Programm liest auch Dateien die nicht im *.txt Format vorliegen.
+
 ##Kontaktdaten
 Markus Leitz
 
