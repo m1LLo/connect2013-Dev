@@ -71,6 +71,9 @@ Zum Testen der Verschlüsselung gibt es 2 Möglichkeiten:
 ###Nicht abgefangen
 Das Programm liest auch Dateien die nicht im *.txt Format vorliegen.
 
+##Dokumentation
+Für die Dokumentation wurde Doxygen verwendet. Das Doxyfile liegt bei und ist so eingestellt dass die Dokumentation im HTML Format im Ordner "Doku" erstellt wird.
+
 ##Kontaktdaten
 Markus Leitz
 
