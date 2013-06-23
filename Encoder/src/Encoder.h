@@ -12,20 +12,11 @@
 
 #include <string>
 #include <iostream>
-#include "ReadFileClass.h"
-#include "WriteFileClass.h"
-#include "EncoderClass.h"
-#include "EncodingCheckClass.h"
-#include "DecoderClass.h"
-#include "ParameterCheckClass.h"
+#include "classes/ParameterCheckClass.h"
+#include "classes/FunctionsClass.h"
 using namespace std;
 
-//Prototyp
-void encoden(char* quellDatei, char* zielDatei);
-void decoden(char* quellDatei, char* zielDatei);
-void encodenTestenOhneAusgabe(char* quellDatei, char* vergleichsDatei);
-void encodenTestenMitAusgabe(char* quellDatei, char* zielDatei,
-		char* vergleichsDatei);
-void dateienVergleichen(char* zuVergleichendeDatei, char* vorlageDatei);
+//Konstanten
+const string UNBEKANNTER_FEHLER = "Es ist ein unbekannter Fehler aufgetreten";
 
 #endif /* ENCODER_H_ */

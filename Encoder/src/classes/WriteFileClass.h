@@ -14,6 +14,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
 /**
@@ -26,7 +27,7 @@ class WriteFileClass
 public:
 
 	//Fehlermeldungen
-	static const char* FEHLER_BEI_SCHREIBEN_IN_DATEI;
+	static const string FEHLER_BEI_SCHREIBEN_IN_DATEI;
 
 	/**
 	 * Erstell ein Objekt der Klasse WriteFileClass und schreibt den ueber-

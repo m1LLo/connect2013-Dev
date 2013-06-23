@@ -13,6 +13,7 @@
 
 #include <string>
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
 /**
@@ -23,9 +24,26 @@ using namespace std;
 class EncodingCheckClass
 {
 public:
-	static const char* STRINGS_NICHT_GLEICHLANG;
+	//Fehlermeldungen
+	static const string NICHT_GLEICH_LANG;
+	static const string SIND_GLEICH;
+	static const string NICHT_GLEICH;
+
+	/**
+	 * Konstruktor vergleicht die beiden Strings auf Gleichheit.
+	 *
+	 * @param testString			der zu Vergleichede String
+	 * @param vergleichsString	der Vorlagen String
+	 */
 	EncodingCheckClass(string testString, string vergleichsString);
 
+	/**
+	 * Vergleicht zwei Strings auf Gleichheit
+	 *
+	 * @param testString			Der zu testende String
+	 * @param vergleichsString	Vorlagen String
+	 * @return
+	 */
 	bool stringVergleichen(string testString, string vergleichsString);
 };
 

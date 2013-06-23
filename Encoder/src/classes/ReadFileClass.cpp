@@ -17,13 +17,16 @@ const string ReadFileClass::DATEI_IST_LEER = "Leere Datei: ";
 //Einziger gueltiger/moeglicher Konstruktor
 ReadFileClass::ReadFileClass(char* quelldatei)
 {
-	if (stringIstLeer(quelldatei))
+	//Ueberpruefen ob Leere Datei
+	if (dateiIstLeer(quelldatei))
 	{
 		throw logic_error(DATEI_IST_LEER + quelldatei);
 	}
 
 	ifstream quelle;
 	quelle.open(quelldatei);
+
+	//Testen ob Datei vorhanden
 	if (!quelle)
 	{
 		throw runtime_error(DATEI_NICHT_VORHANDEN + quelldatei);
@@ -31,16 +34,21 @@ ReadFileClass::ReadFileClass(char* quelldatei)
 
 	string zeile;
 	ostringstream gesammt;
+
+	//Zeilenweise Lesen aus Datei und in ostringstream schieben
 	while (getline(quelle, zeile))
 	{
 		gesammt << zeile << endl;
 	}
+
+	//gelesener Inhalt in Attribut speichern
 	this->gelesenerInhalt = gesammt.str();
 
 	quelle.close();
 }
 
-bool ReadFileClass::stringIstLeer(const char* dateiZuOeffnen) const
+//Ueberpruefen ob Datei leer ist
+bool ReadFileClass::dateiIstLeer(const char* dateiZuOeffnen) const
 {
 	ifstream datei;
 	string ersteZeile;

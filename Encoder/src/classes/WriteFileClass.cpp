@@ -10,7 +10,7 @@
 
 #include "WriteFileClass.h"
 
-const char* WriteFileClass::FEHLER_BEI_SCHREIBEN_IN_DATEI = "Fehler bei Schreiben in Datei!";
+const string WriteFileClass::FEHLER_BEI_SCHREIBEN_IN_DATEI = "Fehler bei Schreiben in Datei!";
 
 WriteFileClass::WriteFileClass(string zuSchreibenderInhalt, char* zielDatei)
 {
@@ -19,7 +19,7 @@ WriteFileClass::WriteFileClass(string zuSchreibenderInhalt, char* zielDatei)
 
 	if (!ziel)
 	{
-		throw FEHLER_BEI_SCHREIBEN_IN_DATEI;
+		throw runtime_error(FEHLER_BEI_SCHREIBEN_IN_DATEI + zielDatei);
 	}
 
 	ziel << zuSchreibenderInhalt;

@@ -12,7 +12,9 @@ DELOBJ = *.o
 APPLICATION = encoder
 
 #Objekte fuer kompilierung
-OBJEKTS = ReadFileClass.o WriteFileClass.o EncoderClass.o EncodingCheckClass.o DecoderClass.o ParameterCheckClass.o
+OBJEKTS = classes/ReadFileClass.o classes/WriteFileClass.o classes/EncoderClass.o\
+classes/EncodingCheckClass.o classes/DecoderClass.o classes/ParameterCheckClass.o\
+classes/FunctionsClass.o
 
 #Benutzerinfos ausgeben
 OBJEKTEERSTELLEN = @echo "==OBJEKTDATEIEN WERDEN ERSTELLT=="
@@ -33,23 +35,29 @@ objekte: $(OBJEKTS)
 
 encoder: encoder.cpp $(OBJEKTS)
 
-ReadFileClass.o: ReadFileClass.cpp ReadFileClass.h
+ReadFileClass.o: classes/ReadFileClass.cpp classes/ReadFileClass.h
 
-WriteFileClass.o: WriteFileClass.cpp WriteFileClass.h
+WriteFileClass.o: classes/WriteFileClass.cpp classes/WriteFileClass.h
 
-EncoderClass.o: EncoderClass.cpp EncoderClass.h
+EncoderClass.o: classes/EncoderClass.cpp classes/EncoderClass.h
 
-EncodingCheckClass.o: EncodingCheckClass.cpp EncodingCheckClass.h
+EncodingCheckClass.o: classes/EncodingCheckClass.cpp classes/EncodingCheckClass.h
 
-DecoderClass.o: DecoderClass.cpp DecoderClass.h
+DecoderClass.o: classes/DecoderClass.cpp classes/DecoderClass.h
 
-ParameterCheckClass.o: ParameterCheckClass.cpp ParameterCheckClass.h
+ParameterCheckClass.o: classes/ParameterCheckClass.cpp classes/ParameterCheckClass.h
+
+FunctionsClass.o: classes/FunctionsClass.cpp classes/FunctionsClass.h
 
 
 # Loeschen der Objektdateien und der Binary
 clean:
-	@echo "Folgende Daten werden geloescht"
-	@echo $(DELOBJ) $(APPLICATION)
-	rm  $(DELOBJ)
-	rm $(APPLICATION)
+	@echo "FOLGENDE DATEN WERDEN GELOESCHT:"
+	@echo "Objektdateien:"
+	@echo $(DELOBJ)
+	rm -f classes/$(DELOBJ)
+	
+	@echo "ausfuehrbaren Datei:"
+	@echo $(APPLICATION)
+	rm -f $(APPLICATION)
 	

@@ -8,6 +8,7 @@
  * 					N-Y werden um 1 erhoeht
  * 					A=M, Z=N
  *	
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		EncoderClass.h
  * @date: 		12.06.2013
  * @author:	 	Markus Leitz (3543994)

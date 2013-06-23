@@ -1,9 +1,17 @@
 /**
- * Klasse entschluesselt eine verschluesselte Datei und macht sie wieder
+ * Klasse entschluesselt einen verschluesselten String und macht ihn wieder
  * lesbar. Dafuer wird der Verschluesselungsalgorithmus aus EncoderClass
  * rueckwaerts angewendet. Gross- und Kleinbuchstaben werden dabei
  * verschieden behandelt und dabei werden bestimmte Intervalle dieser auch
  * wieder anderst verschluesselt/entschluesselt.
+ *
+ *		-Buchstaben zwischen A-L um 1 erhoehen
+ *		-Buchstaben zwischen O-Z um 1 verringern
+ *		-M & N werden zu A & Z
+ *
+ *		-Buchstaben von c-m um 2 verringern
+ *		-Buchstaben von n-x um 2 erhoehen
+ *		-Sonderregelung fuer a=l,b=m,y=n,z=o
  *	
  * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		DecoderClass.h
@@ -28,7 +36,8 @@ class DecoderClass
 public:
 
 	/* Konstanten fuer Fallunterscheidung fuer Gross- und Kleinbuchstaben.
-	 * Werte aus der ASCII-Tabelle
+	 * Werte aus der ASCII-Tabelle. Sehr umständlich aber wurde mir so
+	 * eingetrichtert.
 	 */
 	static const int GROSS_BUCHSTABE_A;
 	static const int GROSS_BUCHSTABE_B;
@@ -89,6 +98,12 @@ public:
 	 */
 	char kleinBuchStabeDecoden(char charZuDecoden);
 
+	/**
+	 * GET-Methode liefert das Attribut DecodeterString.
+	 * Zur Wertabfrage für andere Klassen.
+	 *
+	 * @return	String entschlüsselt
+	 */
 	const string& getDecodeterString() const
 	{
 		return decodeterString;

@@ -12,8 +12,10 @@
 
 #include "EncodingCheckClass.h"
 
-const char* EncodingCheckClass::STRINGS_NICHT_GLEICHLANG =
-		"Strings muessen gleichlang sein zum Vergleichen!";
+const string EncodingCheckClass::NICHT_GLEICH_LANG =
+		"Daten muessen gleichlang sein";
+const string EncodingCheckClass::SIND_GLEICH = "Daten sind Gleich";
+const string EncodingCheckClass::NICHT_GLEICH = "Daten sind Ungleich";
 
 //Konstruktor
 EncodingCheckClass::EncodingCheckClass(string testString,
@@ -23,12 +25,12 @@ EncodingCheckClass::EncodingCheckClass(string testString,
 	if (testString.length() == vergleichsString.length()
 			&& stringVergleichen(testString, vergleichsString))
 	{
-		cout << "Dateien sind gleich!" << endl;
+		cout << SIND_GLEICH << endl;
 
 	}
 	else
 	{
-		cout << "Dateien sind nicht gleich!" << endl;
+		cout << NICHT_GLEICH << endl;
 	}
 }
 
@@ -38,7 +40,7 @@ bool EncodingCheckClass::stringVergleichen(string testString,
 	//Nur gleichlange Strings vergleichen
 	if (testString.length() != vergleichsString.length())
 	{
-		throw STRINGS_NICHT_GLEICHLANG;
+		throw logic_error(NICHT_GLEICH_LANG);
 	}
 
 	for (int i = 0; i < testString.length(); ++i)

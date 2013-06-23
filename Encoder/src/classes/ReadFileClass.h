@@ -41,7 +41,13 @@ public:
 	 */
 	ReadFileClass(char* quelldatei);
 
-	bool stringIstLeer(const char* zuUntersuchenderString) const;
+	/**
+	 * Funktion ueberprueft ob die Datei leer ist.
+	 *
+	 * @param zuUntersuchendeDatei		Datei die geprueft werden soll
+	 * @return				TRUE falls Datei leer, False sonst
+	 */
+	bool dateiIstLeer(const char* zuUntersuchendeDatei) const;
 
 	/**
 	 * GET-Methode zum Auslesen des Inhalts fuer andere Objekte.

@@ -1,5 +1,5 @@
 /**
- * Diese Klasse kontroliert Parameter auf Eingabefehler fuer das
+ * Diese Klasse kontrolliert Parameter auf Eingabefehler fuer das
  * Encoder-Projekt des Consistec Connect 2013 Gewinnspiels.
  * Setzt die verschiedenen Modi:
  * 	-h											(HILFMENU AUSGEBEN)
@@ -39,7 +39,6 @@ public:
 	static const string KEINE_VORLAGEN_DATEI;
 
 	//Benutzerausgabe fuer Aufrufe
-
 	static const string ENCODER_AUFRUF;
 	static const string DECODER_AUFRUF;
 	static const string ENCODER_TEST_EINS_AUFRUF;

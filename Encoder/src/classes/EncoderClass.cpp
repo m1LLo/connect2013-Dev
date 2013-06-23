@@ -9,6 +9,7 @@
  * 					N-Y werden um 1 erhoeht
  * 					A=M, Z=N
  *	
+ * Project:		Consistec Connect2013 Gewinnspiel
  * @file:		EncoderClass.cpp
  * @date: 		12.06.2013
  * @author:	 	Markus Leitz (3543994)
@@ -121,7 +122,7 @@ char EncoderClass::kleinBuchstabeEncoden(const int& kleinBuchstabeAlsInt)
 	}
 
 	/* Fuer die Buchstaben k,l,m,o gelten Sonderregeln da sie zwischen den
-	 * zwei Verschiebungen liegen.
+	 * zwei Verschiebungen liegen. Waere auch mit +/-11 moeglich gewesen.
 	 */
 	switch (kleinBuchstabeAlsInt)
 	{

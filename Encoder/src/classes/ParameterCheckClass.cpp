@@ -27,15 +27,15 @@ const string ParameterCheckClass::KEINE_VORLAGEN_DATEI =
 
 //Benutzerinfo Aufrufe
 const string ParameterCheckClass::ENCODER_AUFRUF =
-		"Encoder:\t[PROGRAMMNAME] [QUELLDATEI] [ZIELDATEI]";
+		"Encoder:\t[PROGRAMMNAME] [QUELLDATEI] [ZIELDATEI]\n";
 const string ParameterCheckClass::DECODER_AUFRUF =
-		"Decoder:\t[PROGRAMMNAME] -d [QUELLDATEI] [ZIELDATEI]";
+		"Decoder:\t[PROGRAMMNAME] -d [QUELLDATEI] [ZIELDATEI]\n";
 const string ParameterCheckClass::ENCODER_TEST_EINS_AUFRUF =
-		"Encoder Test:\t[PROGRAMMNAME] -t [QUELLDATEI] [VORLAGENDATEI]";
+		"Encoder Test:\t[PROGRAMMNAME] -t [QUELLDATEI] [VORLAGENDATEI]\n";
 const string ParameterCheckClass::ENCODER_TEST_ZWEI_AUFRUF =
-		"Encoder Test:\t[PROGRAMMNAME] -t [QUELLDATEI] [ZIELDATEI] [VORLAGENDATEI]";
+		"Encoder Test:\t[PROGRAMMNAME] -t [QUELLDATEI] [ZIELDATEI] [VORLAGENDATEI]\n";
 const string ParameterCheckClass::CHECK_AUFRUF =
-		"Checkmodus:\t[PROGRAMMNAME] -c [VERGLEICHSDATEI] [VORLAGENDATEI]";
+		"Checkmodus:\t[PROGRAMMNAME] -c [VERGLEICHSDATEI] [VORLAGENDATEI]\n";
 
 //Parameter Modi
 const char* ParameterCheckClass::CHECK_MODUS_PARAMETER = "-c";
@@ -52,12 +52,12 @@ int ParameterCheckClass::parameterUeberpruefen(int anzahl,
 	//Falls garkeine Parameter uebergeben wurden
 	if (anzahl == 1)
 	{
-		throw logic_error(KEINE_PARAMETER_UEBERGEBEN + hilfsMenuAusgeben());
+		throw logic_error(KEINE_PARAMETER_UEBERGEBEN + ENCODER_AUFRUF);
 	}
 
 	if (anzahl > 5)
 	{
-		throw logic_error(ZUVIELE_PARAMETER + hilfsMenuAusgeben());
+		throw logic_error(ZUVIELE_PARAMETER + ENCODER_AUFRUF);
 	}
 
 	//Gibt das Hilfsmenu aus
@@ -165,11 +165,11 @@ string ParameterCheckClass::hilfsMenuAusgeben()
 
 	buffer << endl;
 	buffer << "---------HILFSMENU---------" << endl;
-	buffer << ENCODER_AUFRUF << endl;
-	buffer << DECODER_AUFRUF << endl;
-	buffer << ENCODER_TEST_EINS_AUFRUF << endl;
-	buffer << ENCODER_TEST_ZWEI_AUFRUF << endl;
-	buffer << CHECK_AUFRUF << endl;
+	buffer << ENCODER_AUFRUF;
+	buffer << DECODER_AUFRUF;
+	buffer << ENCODER_TEST_EINS_AUFRUF;
+	buffer << ENCODER_TEST_ZWEI_AUFRUF;
+	buffer << CHECK_AUFRUF;
 	buffer << endl;
 
 	return buffer.str();

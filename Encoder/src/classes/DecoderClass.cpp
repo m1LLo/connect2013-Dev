@@ -1,6 +1,6 @@
 /**
  * Mehtoden- und Konstantendefinition der Klasse DecoderClass.
- * Klasse entschluesselt eine verschluesselte Datei und speichert es
+ * Klasse entschluesselt einen verschluesselten String und speichert es
  * enschluesselt in einem String als Klassenattribut.
  *	
  * Project:		Consistec Connect2013 Gewinnspiel
@@ -125,7 +125,7 @@ char DecoderClass::kleinBuchStabeDecoden(char charZuDecoden)
 		decodeterBuchstabe = static_cast<char>(charAlsInt + 2);
 	}
 
-	//Sonderregelung fuer a=l,b=m,y=n,z=o
+	//Sonderregelung fuer a=l,b=m,y=n,z=o . Waere auch mit +/- 11 moeglich.
 	switch (charAlsInt)
 	{
 	case KLEIN_BUCHSTABE_A:
